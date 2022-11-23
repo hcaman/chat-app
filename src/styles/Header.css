@@ -1,0 +1,10 @@
+.header {
+    background-color: #2e82d6;
+    color: #FFF;
+    text-transform: uppercase;
+    padding: 0 0.5rem;
+    text-align: center;
+}
+.header h1 {
+    margin-top: 0;
+}
