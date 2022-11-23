@@ -1,0 +1,5 @@
+.loginContainer {
+    display: grid;
+    place-items: center;
+    justify-content: space-evenly;
+}

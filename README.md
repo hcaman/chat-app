@@ -1,3 +1,50 @@
+# Welcome to Chat-App!
+
+Hi! I'm **Chat-Apps** a simple webapp for make your social life more interesting, you can chat with everybody in a open chatroom !. 
+
+## Prerequisites
+
+This app requires node.js. You should use the next page for install the prerequisites.
+
+>**Install node.js** https://nodejs.org/en/download/
+
+Also you need all the files for the project. You can `Download` and unzip the files, or `Clone` the project using
+
+>**`git clone` with the current url** 
+
+## Install App and test in local
+
+Now, you should enter into the folder `app` from the project directory.
+
+1. **You should install all the dependencies using:** `npm install`
+
+2. **I recommend run the test for check if is all OK using:** `npm run test`
+    > **The result of the test should be:**
+    >    >Test Suites: 3 passed, 3 total
+    >    >Tests: 11 passed, 11 total
+    >    >Snapshots: 0 total
+
+3. **You can run the project localhost using:** `npm run start`
+
+## Use the App in your browser or mobile !
+
+Finally, for use the app you should enter in the browser and go to:
+> **http://localhost:3000/**
+
+## Deploy in a real server
+
+Now, If you enjoy the app you can upload in a external server using the performance version following the next steps:
+
+1. **You should build the project using:** `npm run build`
+
+2. **You can find the folder `build` inside the folder `app`**
+
+3. **Upload the folder `build` into a host** 
+
+> **Free option is `https://www.netlify.com/with/react/`**
+
+> **You can also simulate host following the `Deployment` inside the section `Learn More` on the bottom**
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

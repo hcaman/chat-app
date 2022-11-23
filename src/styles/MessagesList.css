@@ -1,0 +1,70 @@
+.msgsList {
+    margin: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    border: #000;
+    border-style: double;
+    padding: 1rem;
+    max-height: 100%;
+    overflow: auto;
+}
+.msgCard {
+    padding: 5px;
+}
+.msgRight {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.msgContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 3px 10px;
+    width: auto;
+    transition: 9.9s ease;
+}
+.msgCard.onLeft > .msgContainer.initialColor, .msgCard.onRight > .msgContainer.initialColor {
+    background-color: #efe97c;
+}
+.msgCard.onLeft > .msgContainer {
+    background-color: #e2d5d5;
+}
+.msgCard.onRight > .msgContainer {
+    background-color: #bdff7b;
+}
+.userSentMsg {
+    font-size: 17px;
+    font-weight: bold;
+}
+.msgText {
+    font-size: 14px;
+}
+.timeSentMsg {
+    font-size: 12px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.onRight {
+    align-self: flex-end;
+}
+.msgContainer .deleteChat {
+    background-color: #768a77;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 8px;
+    visibility: hidden;
+}
+.msgContainer:hover .deleteChat {
+    visibility: visible;
+}
+@media (min-width: 576px) {
+    .msgContainer {
+        width: max-content;
+    }
+}
