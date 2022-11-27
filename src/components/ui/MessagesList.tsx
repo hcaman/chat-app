@@ -8,7 +8,7 @@ type MessagesListElement = ({
   msgsChat,
 }: {
   currentUser: string;
-  msgsChat: any;
+  msgsChat: MessagesChat[];
 }) => JSX.Element;
 
 const MessagesList: MessagesListElement = ({ currentUser, msgsChat }) => {

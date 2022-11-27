@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/Header.css';
-import phrases from '../dictionary';
+import './styles.css';
+import phrases from '../../dictionary';
 
 const Header: () => JSX.Element = () => {
   return (

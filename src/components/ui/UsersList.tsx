@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import '../../styles/UsersList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers, UserData } from '../../redux/userSlice';
-import { RootState } from '../../store';
+import { selectUsersOnline } from '../../redux/userSelector';
 
 const UsersList: () => JSX.Element = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const UsersList: () => JSX.Element = () => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const { usersOnline } = useSelector((state: RootState) => state.user);
+  const { usersOnline } = useSelector(selectUsersOnline);
 
   return (
     <div className="users-online">

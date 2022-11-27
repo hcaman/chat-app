@@ -1,8 +1,8 @@
 import React from 'react';
-import { SetIsLoggedIn } from '../App';
-import '../styles/UserLogin.css';
-import TextInput from './ui/TextInput';
-import phrases from '../dictionary';
+import { SetIsLoggedIn } from '../../App';
+import './styles.css';
+import TextInput from '../ui/TextInput';
+import phrases from '../../dictionary';
 
 type UserLoginElement = ({
   setIsLoggedIn,

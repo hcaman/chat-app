@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './styles/App.css';
 import UserLogin from './components/UserLogin';
 import ChatRoom from './components/ChatRoom';
 import Header from './components/Header';

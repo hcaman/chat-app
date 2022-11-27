@@ -20,7 +20,7 @@ type TextInputElement = ({
   isChat?: boolean | undefined;
   setIsLoggedIn?: SetIsLoggedIn;
   currentUser?: string;
-  foundLastMsg?: any;
+  foundLastMsg?: Function;
 }) => JSX.Element;
 
 type OnSubmitData = (data: string, id?: string) => void;
@@ -94,7 +94,8 @@ const TextInput: TextInputElement = ({
   };
 
   const onKeyUpChange: OnKeyUpChangeType = (e) => {
-    if (!isChat || e.key !== 'ArrowUp') return;
+    if (!isChat || typeof foundLastMsg === 'undefined' || e.key !== 'ArrowUp')
+      return;
     setLastMsg(foundLastMsg(currentUser));
   };
 
