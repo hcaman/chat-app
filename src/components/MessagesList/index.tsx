@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import '../../styles/MessagesList.css';
+import './styles.css';
 import { useDispatch } from 'react-redux';
 import { deleteMsg, MessagesChat } from '../../redux/chatSlice';
+import {
+  CheckUserType,
+  IsOwnMsgsType,
+  MessagesCardType,
+  MessagesListType,
+  OnClickBtnDelteType,
+} from './types';
 
-type MessagesListElement = ({
-  currentUser,
-  msgsChat,
-}: {
-  currentUser: string;
-  msgsChat: MessagesChat[];
-}) => JSX.Element;
-
-const MessagesList: MessagesListElement = ({ currentUser, msgsChat }) => {
+const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
   return (
     <div className="msgsList">
       {msgsChat?.length
@@ -27,23 +26,14 @@ const MessagesList: MessagesListElement = ({ currentUser, msgsChat }) => {
   );
 };
 
-type MessagesCardElement = ({
-  singleMsg,
-  userLogged,
-}: {
-  singleMsg: MessagesChat;
-  userLogged: string;
-}) => JSX.Element;
-
-const MessagesCard: MessagesCardElement = ({ singleMsg, userLogged }) => {
+const MessagesCard: MessagesCardType = ({ singleMsg, userLogged }) => {
   const dispatch = useDispatch();
   const [isFinishTransition, setIsFinishtransition] = useState(false);
-  const checkUser: (userMsgs: string) => boolean = (userMsgs) =>
-    userMsgs === userLogged;
-  const isOwnMsgs: (userMsgs: string) => string = (userMsgs) =>
+  const checkUser: CheckUserType = (userMsgs) => userMsgs === userLogged;
+  const isOwnMsgs: IsOwnMsgsType = (userMsgs) =>
     checkUser(userMsgs) ? 'onRight' : 'onLeft';
 
-  const onClickBtnDelte: (idToDelete: string) => void = (idToDelete) => {
+  const onClickBtnDelte: OnClickBtnDelteType = (idToDelete) => {
     dispatch(deleteMsg(idToDelete));
   };
   setTimeout(() => {

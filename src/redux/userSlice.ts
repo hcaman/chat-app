@@ -1,17 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-
-export interface UserData {
-  id: string;
-  userName: string;
-  isOnline: boolean;
-}
-
-export interface UsersAppData {
-  usersOnline: UserData[];
-  userLogged: string;
-  isLoggedIn: boolean;
-}
+import { UsersAppData } from './types';
 
 const initialState: UsersAppData = {
   usersOnline: [],

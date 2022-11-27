@@ -1,22 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-
-type ConvertTime = (timeString: string | number) => string;
-
-export interface MsgDataPayload {
-  message: string;
-  user: string;
-}
-export interface MessageModified extends MsgDataPayload {
-  id: string;
-}
-export interface MessagesChat extends MessageModified {
-  hourAndMinutes: string;
-  addTime: number;
-}
-export interface ChatAppData {
-  msgsChat: MessagesChat[];
-}
+import {
+  ChatAppData,
+  ConvertTimeType,
+  IMessageModified,
+  IMsgDataPayload,
+} from './types';
 
 const initialState: ChatAppData = {
   msgsChat: [],
@@ -29,8 +18,8 @@ const chatSlice = createSlice({
     getMsg(state) {
       state.msgsChat = state.msgsChat.sort((a, b) => b.addTime - a.addTime);
     },
-    addMsg(state, action: PayloadAction<MsgDataPayload>) {
-      const convertTime: ConvertTime = (timeString) => {
+    addMsg(state, action: PayloadAction<IMsgDataPayload>) {
+      const convertTime: ConvertTimeType = (timeString) => {
         const formatTwoNums: (num: number) => string = (num) => {
           const checkLength = num.toString().length === 1;
           return checkLength ? `0${num}` : `${num}`;
@@ -57,7 +46,7 @@ const chatSlice = createSlice({
       );
       state.msgsChat = msgFiltered.sort((a, b) => b.addTime - a.addTime);
     },
-    updateMsg(state, action: PayloadAction<MessageModified>) {
+    updateMsg(state, action: PayloadAction<IMessageModified>) {
       const msgIndex = state.msgsChat.findIndex(
         (msg) => msg.id === action.payload.id
       );

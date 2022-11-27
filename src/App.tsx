@@ -12,7 +12,9 @@ export interface loggedInDataType {
   isLoggedIn: boolean;
 }
 
-const App: () => JSX.Element = () => {
+type AppType = () => JSX.Element;
+
+const App: AppType = () => {
   const logUsername = sessionStorage.getItem('logUsername');
 
   const [loggedInData, setLoggedInData] = useState<loggedInDataType>({

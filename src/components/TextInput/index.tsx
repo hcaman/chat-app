@@ -1,34 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/TextInput.css';
+import './styles.css';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/userSlice';
-import {
-  addMsg,
-  MessageModified,
-  MessagesChat,
-  updateMsg,
-} from '../../redux/chatSlice';
-import { SetIsLoggedIn } from '../../App';
+import { addMsg, updateMsg } from '../../redux/chatSlice';
 import phrases from '../../dictionary';
+import {
+  OnChangeInputType,
+  OnKeyUpChangeType,
+  OnSubmitDataType,
+  OnSubmitFormType,
+  TextInputType,
+} from './types';
+import { IMessageModified, IMessagesChat } from '../../redux/types';
 
-type TextInputElement = ({
-  isChat,
-  setIsLoggedIn,
-  currentUser,
-  foundLastMsg,
-}: {
-  isChat?: boolean | undefined;
-  setIsLoggedIn?: SetIsLoggedIn;
-  currentUser?: string;
-  foundLastMsg?: Function;
-}) => JSX.Element;
-
-type OnSubmitData = (data: string, id?: string) => void;
-type OnSubmitFormType = (e: React.FormEvent<HTMLFormElement>) => void;
-type OnChangeInputType = (e: React.FormEvent<HTMLInputElement>) => void;
-type OnKeyUpChangeType = (e: React.KeyboardEvent<HTMLInputElement>) => void;
-
-const TextInput: TextInputElement = ({
+const TextInput: TextInputType = ({
   isChat = false,
   setIsLoggedIn,
   currentUser,
@@ -37,7 +22,7 @@ const TextInput: TextInputElement = ({
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState<string>('');
   const [errorEmptyInput, setErrorEmptyInput] = useState<boolean>(false);
-  const [lastMsg, setLastMsg] = useState<null | MessagesChat>(null);
+  const [lastMsg, setLastMsg] = useState<null | IMessagesChat>(null);
 
   useEffect(() => {
     if (lastMsg) {
@@ -45,7 +30,7 @@ const TextInput: TextInputElement = ({
     }
   }, [lastMsg]);
 
-  const onSubmitUser: OnSubmitData = (user) => {
+  const onSubmitUser: OnSubmitDataType = (user) => {
     if (!user?.trim()) {
       return;
     }
@@ -58,7 +43,7 @@ const TextInput: TextInputElement = ({
       sessionStorage.setItem('logUsername', user);
     }
   };
-  const onSubmitChat: OnSubmitData = (message) => {
+  const onSubmitChat: OnSubmitDataType = (message) => {
     if (currentUser) {
       const idToModify = lastMsg?.id;
       const dataMsg = {
@@ -66,7 +51,7 @@ const TextInput: TextInputElement = ({
         user: currentUser,
       };
       if (idToModify) {
-        const msgToModify: MessageModified = Object.assign(dataMsg, {
+        const msgToModify: IMessageModified = Object.assign(dataMsg, {
           id: idToModify,
         });
         dispatch(updateMsg(msgToModify));
