@@ -1,18 +1,9 @@
-import { AnyAction, CombinedState, combineReducers } from '@reduxjs/toolkit';
-import { Reducer } from 'react';
+import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import userReducer from './userSlice';
 import chatReducer from './chatSlice';
 import persistConfig from './persistConfig';
-import { ChatAppData, UsersAppData } from './types';
-
-export type RootReducerType = Reducer<
-  CombinedState<{
-    user: UsersAppData;
-    chat: ChatAppData;
-  }>,
-  AnyAction
->;
+import { RootReducerType } from './types';
 
 const rootReducer: RootReducerType | any = combineReducers({
   user: userReducer,

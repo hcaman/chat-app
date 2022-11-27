@@ -4,10 +4,11 @@ import {
   createStateSyncMiddleware,
 } from 'redux-state-sync';
 import persistedReducer from './rootReducer';
+import { StoreType } from './types';
 
 const excludedActions: string[] = ['persist/PERSIST', 'persist/REHYDRATE'];
 
-const store = configureStore({
+const store: StoreType = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware: any) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(
