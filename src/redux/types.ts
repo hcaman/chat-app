@@ -1,7 +1,6 @@
-import { Action } from '@reduxjs/toolkit';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { PersistPartial } from 'redux-persist/es/persistReducer';
-import { AnyAction, CombinedState } from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, Action } from '@reduxjs/toolkit';
 import { Reducer } from 'react';
 
 /* *********** */
