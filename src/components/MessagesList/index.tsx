@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './styles.css';
 import { useDispatch } from 'react-redux';
-import { deleteMsg, MessagesChat } from '../../redux/chatSlice';
+import { deleteMsg } from '../../redux/chatSlice';
+import { IMessagesChat } from '../../redux/types';
 import {
   CheckUserType,
   IsOwnMsgsType,
@@ -14,7 +15,7 @@ const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
   return (
     <div className="msgsList">
       {msgsChat?.length
-        ? msgsChat.map((singleMsg: MessagesChat) => (
+        ? msgsChat.map((singleMsg: IMessagesChat) => (
             <MessagesCard
               key={singleMsg.id}
               singleMsg={singleMsg}

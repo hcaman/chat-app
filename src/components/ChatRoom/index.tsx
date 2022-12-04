@@ -4,13 +4,13 @@ import TextInput from '../TextInput';
 import MessagesList from '../MessagesList';
 import { useSelector } from 'react-redux';
 import { selectMsgsChat } from '../../redux/chatSelector';
-import { ChatAppData, MessagesChat } from '../../redux/chatSlice';
+import { ChatAppData, IMessagesChat } from '../../redux/types';
 import { ChatRoomType, FoundLastMsg } from './types';
 
 const ChatRoom: ChatRoomType = ({ currentUser }) => {
   const { msgsChat }: ChatAppData = useSelector(selectMsgsChat);
   const foundLastMsg: FoundLastMsg = (user) =>
-    msgsChat.find((msg: MessagesChat) => msg.user === user);
+    msgsChat.find((msg: IMessagesChat) => msg.user === user);
 
   return (
     <div className="container">
