@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
-import { useDispatch } from 'react-redux';
-import { deleteMsg } from '../../redux/chatSlice';
 import { IMessagesChat } from '../../redux/types';
 import {
   CheckUserType,
   IsOwnMsgsType,
   MessagesCardType,
   MessagesListType,
-  OnClickBtnDelteType,
 } from './types';
+import useMessagesChat from '../../hooks/useMessagesChat';
 
 const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
   return (
@@ -28,35 +26,35 @@ const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
 };
 
 const MessagesCard: MessagesCardType = ({ singleMsg, userLogged }) => {
-  const dispatch = useDispatch();
-  const [isFinishTransition, setIsFinishtransition] = useState(false);
+  const { isFinishTransition, setTrueFinishTrans, onClickBtnDelte } =
+    useMessagesChat();
+
+  const { user, id, message, hourAndMinutes } = singleMsg;
+
   const checkUser: CheckUserType = (userMsgs) => userMsgs === userLogged;
   const isOwnMsgs: IsOwnMsgsType = (userMsgs) =>
     checkUser(userMsgs) ? 'onRight' : 'onLeft';
 
-  const onClickBtnDelte: OnClickBtnDelteType = (idToDelete) => {
-    dispatch(deleteMsg(idToDelete));
-  };
   setTimeout(() => {
-    setIsFinishtransition(true);
+    setTrueFinishTrans();
   }, 100);
 
   return (
-    <div className={'msgCard ' + isOwnMsgs(singleMsg.user)}>
-      <div className="userSentMsg">{singleMsg.user}:</div>
+    <div className={'msgCard ' + isOwnMsgs(user)}>
+      <div className="userSentMsg">{user}:</div>
       <div
         className={`msgContainer ${isFinishTransition ? '' : 'initialColor'}`}
       >
-        {checkUser(singleMsg.user) && (
+        {checkUser(user) && (
           <button
-            onClick={() => onClickBtnDelte(singleMsg.id)}
+            onClick={() => onClickBtnDelte(id)}
             className="onRight deleteChat"
           >
             X
           </button>
         )}
-        <div className="msgText">{singleMsg.message}</div>
-        <span className="timeSentMsg">{singleMsg.hourAndMinutes}</span>
+        <div className="msgText">{message}</div>
+        <span className="timeSentMsg">{hourAndMinutes}</span>
       </div>
     </div>
   );

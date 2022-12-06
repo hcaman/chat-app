@@ -1,88 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './styles.css';
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/userSlice';
-import { addMsg, updateMsg } from '../../redux/chatSlice';
 import phrases from '../../dictionary';
-import {
-  OnChangeInputType,
-  OnKeyUpChangeType,
-  OnSubmitDataType,
-  OnSubmitFormType,
-  TextInputType,
-} from './types';
-import { IMessageModified, IMessagesChat } from '../../redux/types';
+import { TextInputType } from './types';
+import useInput from '../../hooks/useInput';
 
 const TextInput: TextInputType = ({
   isChat = false,
   setIsLoggedIn,
-  currentUser,
+  currentUser = '',
   foundLastMsg,
 }) => {
-  const dispatch = useDispatch();
-  const [inputValue, setInputValue] = useState<string>('');
-  const [errorEmptyInput, setErrorEmptyInput] = useState<boolean>(false);
-  const [lastMsg, setLastMsg] = useState<null | IMessagesChat>(null);
-
-  useEffect(() => {
-    if (lastMsg) {
-      setInputValue(lastMsg.message);
-    }
-  }, [lastMsg]);
-
-  const onSubmitUser: OnSubmitDataType = (user) => {
-    if (!user?.trim()) {
-      return;
-    }
-    if (typeof setIsLoggedIn !== 'undefined') {
-      dispatch(loginUser(user));
-      setIsLoggedIn({
-        logUsername: user,
-        isLoggedIn: true,
-      });
-      sessionStorage.setItem('logUsername', user);
-    }
-  };
-  const onSubmitChat: OnSubmitDataType = (message) => {
-    if (currentUser) {
-      const idToModify = lastMsg?.id;
-      const dataMsg = {
-        message,
-        user: currentUser,
-      };
-      if (idToModify) {
-        const msgToModify: IMessageModified = Object.assign(dataMsg, {
-          id: idToModify,
-        });
-        dispatch(updateMsg(msgToModify));
-        setLastMsg(null);
-      } else {
-        dispatch(addMsg(dataMsg));
-      }
-    }
-  };
-
-  const onChangeInput: OnChangeInputType = (e) => {
-    setInputValue(e.currentTarget.value);
-    setErrorEmptyInput(false);
-  };
-
-  const onSubmitForm: OnSubmitFormType = (e) => {
-    e.preventDefault();
-    if (!inputValue?.trim()) return setErrorEmptyInput(true);
-    if (isChat) {
-      onSubmitChat(inputValue);
-    } else {
-      onSubmitUser(inputValue);
-    }
-    setInputValue('');
-  };
-
-  const onKeyUpChange: OnKeyUpChangeType = (e) => {
-    if (!isChat || typeof foundLastMsg === 'undefined' || e.key !== 'ArrowUp')
-      return;
-    setLastMsg(foundLastMsg(currentUser));
-  };
+  const {
+    onSubmitForm,
+    errorEmptyInput,
+    inputValue,
+    onChangeInput,
+    onKeyUpChange,
+  } = useInput(setIsLoggedIn, currentUser, foundLastMsg, isChat);
+  const { placeholderChat, placeholderUser, errorMsg } = phrases;
 
   return (
     <form className="chatForm" onSubmit={onSubmitForm}>
@@ -91,9 +26,9 @@ const TextInput: TextInputType = ({
         value={inputValue}
         onChange={onChangeInput}
         onKeyUpCapture={(e) => onKeyUpChange(e)}
-        placeholder={isChat ? phrases.placeholderChat : phrases.placeholderUser}
+        placeholder={isChat ? placeholderChat : placeholderUser}
       />
-      {errorEmptyInput && <p className="errorMessage">{phrases.errorMsg}</p>}
+      {errorEmptyInput && <p className="errorMessage">{errorMsg}</p>}
     </form>
   );
 };

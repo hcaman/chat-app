@@ -1,20 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './styles.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUsers } from '../../redux/userSlice';
-import { selectUsersOnline } from '../../redux/userSelector';
 import { UsersListType } from './types';
 import { IUserData } from '../../redux/types';
+import useUserList from '../../hooks/useUserList';
 
 const UsersList: UsersListType = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
-
-  const { usersOnline } = useSelector(selectUsersOnline);
-
+  const { usersOnline } = useUserList();
   return (
     <div className="users-online">
       {usersOnline.length &&
