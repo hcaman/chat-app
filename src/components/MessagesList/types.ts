@@ -1,18 +1,18 @@
-import { MessagesChat } from '../../redux/chatSlice';
+import { IMessagesChat } from '../../redux/types';
 
 export type MessagesListType = ({
   currentUser,
   msgsChat,
 }: {
   currentUser: string;
-  msgsChat: MessagesChat[];
+  msgsChat: IMessagesChat[];
 }) => JSX.Element;
 
 export type MessagesCardType = ({
   singleMsg,
   userLogged,
 }: {
-  singleMsg: MessagesChat;
+  singleMsg: IMessagesChat;
   userLogged: string;
 }) => JSX.Element;
 
