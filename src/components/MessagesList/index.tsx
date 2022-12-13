@@ -1,12 +1,7 @@
 import React from 'react';
 import './styles.css';
 import { IMessagesChat } from '../../redux/types';
-import {
-  CheckUserType,
-  IsOwnMsgsType,
-  MessagesCardType,
-  MessagesListType,
-} from './types';
+import { MessagesCardType, MessagesListType } from './types';
 import useMessagesChat from '../../hooks/useMessagesChat';
 
 const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
@@ -26,14 +21,15 @@ const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
 };
 
 const MessagesCard: MessagesCardType = ({ singleMsg, userLogged }) => {
-  const { isFinishTransition, setTrueFinishTrans, onClickBtnDelte } =
-    useMessagesChat();
+  const {
+    isFinishTransition,
+    setTrueFinishTrans,
+    onClickBtnDelte,
+    isOwnMsgs,
+    checkUser,
+  } = useMessagesChat(userLogged);
 
   const { user, id, message, hourAndMinutes } = singleMsg;
-
-  const checkUser: CheckUserType = (userMsgs) => userMsgs === userLogged;
-  const isOwnMsgs: IsOwnMsgsType = (userMsgs) =>
-    checkUser(userMsgs) ? 'onRight' : 'onLeft';
 
   setTimeout(() => {
     setTrueFinishTrans();
