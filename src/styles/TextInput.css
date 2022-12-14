@@ -1,0 +1,19 @@
+.chatForm {
+    grid-row: 3;
+    margin-left: 10px;
+    width: 95%;
+}
+
+.chatInput {
+    width: 90%;
+    height: 30px;
+}
+
+.errorInput {
+    border: red;
+    border-style: solid;
+}
+.errorMessage {
+    margin: 0;
+    color: red;
+}
