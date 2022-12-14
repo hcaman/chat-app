@@ -4,8 +4,9 @@ import {
   createStateSyncMiddleware,
   initMessageListener,
 } from 'redux-state-sync';
-import rootReducer, { RootReducerType } from './redux/rootReducer';
+import rootReducer from './redux/rootReducer';
 import persistConfig from './redux/persistConfig';
+import { RootReducerType } from './redux/types';
 
 const excludedActions = ['persist/PERSIST', 'persist/REHYDRATE'];
 
