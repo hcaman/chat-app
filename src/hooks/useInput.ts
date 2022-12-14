@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SetIsLoggedIn } from '../App';
 import {
   OnChangeInputType,
   OnKeyUpChangeType,
@@ -10,6 +9,7 @@ import {
 import { addMsg, updateMsg } from '../redux/chatSlice';
 import { IMessageModified, IMessagesChat } from '../redux/types';
 import { loginUser } from '../redux/userSlice';
+import { SetIsLoggedIn } from '../types';
 
 const useInput = (
   setIsLoggedIn: SetIsLoggedIn | undefined,

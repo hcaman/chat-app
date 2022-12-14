@@ -1,4 +1,4 @@
-import { SetIsLoggedIn } from '../../App';
+import { SetIsLoggedIn } from '../../types';
 
 export type UserLoginElement = ({
   setIsLoggedIn,

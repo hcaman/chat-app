@@ -1,6 +1,4 @@
-interface StringArray {
-  [index: string]: string;
-}
+import { StringArray } from './types';
 
 const phrases: StringArray = {
   loginText: 'Please write your name for enter into the chatroom:',
