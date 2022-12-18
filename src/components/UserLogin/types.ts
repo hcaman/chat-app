@@ -1,7 +1,7 @@
 import { SetIsLoggedIn } from '../../types';
 
-export type UserLoginElement = ({
-  setIsLoggedIn,
-}: {
+interface UserLoginProps {
   setIsLoggedIn: SetIsLoggedIn;
-}) => JSX.Element;
+}
+
+export type TUserLogin = (props: UserLoginProps) => JSX.Element;
