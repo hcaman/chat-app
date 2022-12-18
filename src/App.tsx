@@ -3,9 +3,9 @@ import UserLogin from './components/UserLogin';
 import ChatRoom from './components/ChatRoom';
 import Header from './components/Header';
 import useLogin from './hooks/useLogin';
-import { AppType } from './types';
+import { AppT } from './types';
 
-const App: AppType = () => {
+const App: AppT = () => {
   const { loggedInData, setLoggedInData } = useLogin();
 
   return (

@@ -1,14 +1,12 @@
-export type SetIsLoggedIn = React.Dispatch<
-  React.SetStateAction<loggedInDataType>
->;
+export type SetIsLoggedIn = React.Dispatch<React.SetStateAction<ILoggedInData>>;
 
-export interface loggedInDataType {
+export interface ILoggedInData {
   logUsername: string;
   isLoggedIn: boolean;
 }
 
-export interface StringArray {
+export interface IStringArray {
   [index: string]: string;
 }
 
-export type AppType = () => JSX.Element;
+export type AppT = () => JSX.Element;

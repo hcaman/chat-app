@@ -2,9 +2,9 @@ import React from 'react';
 import './styles.css';
 import TextInput from '../TextInput';
 import phrases from '../../dictionary';
-import { TUserLogin } from './types';
+import { UserLoginT } from './types';
 
-const UserLogin: TUserLogin = ({ setIsLoggedIn }) => {
+const UserLogin: UserLoginT = ({ setIsLoggedIn }) => {
   return (
     <div className="loginContainer">
       <h2>{phrases.loginText}</h2>

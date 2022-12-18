@@ -6,7 +6,7 @@ import {
 } from 'redux-state-sync';
 import rootReducer from './redux/rootReducer';
 import persistConfig from './redux/persistConfig';
-import { RootReducerType } from './redux/types';
+import { RootReducerT } from './redux/types';
 
 const excludedActions = ['persist/PERSIST', 'persist/REHYDRATE'];
 
@@ -19,7 +19,7 @@ const middleware = (getDefaultMiddleware: any) =>
 
 const reducer = persistReducer(
   persistConfig,
-  rootReducer as RootReducerType | any
+  rootReducer as RootReducerT | any
 );
 
 const store = configureStore({ reducer, middleware });

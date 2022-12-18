@@ -7,11 +7,9 @@ interface ITextInputProps {
   foundLastMsg?: Function;
 }
 
-export type TTextInput = (props: ITextInputProps) => JSX.Element;
+export type TextInputT = (props: ITextInputProps) => JSX.Element;
 
-export type OnSubmitDataType = (data: string, id?: string) => void;
-export type OnSubmitFormType = (e: React.FormEvent<HTMLFormElement>) => void;
-export type OnChangeInputType = (e: React.FormEvent<HTMLInputElement>) => void;
-export type OnKeyUpChangeType = (
-  e: React.KeyboardEvent<HTMLInputElement>
-) => void;
+export type OnSubmitDataT = (data: string, id?: string) => void;
+export type OnSubmitFormT = (e: React.FormEvent<HTMLFormElement>) => void;
+export type OnChangeInputT = (e: React.FormEvent<HTMLInputElement>) => void;
+export type OnKeyUpChangeT = (e: React.KeyboardEvent<HTMLInputElement>) => void;

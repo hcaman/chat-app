@@ -1,1 +1,3 @@
-export const selectMsgsChat = (state: any) => state.chat;
+import { IState } from './types';
+
+export const selectMsgsChat = (state: IState) => state.chat;

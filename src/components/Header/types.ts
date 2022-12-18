@@ -1,1 +1,1 @@
-export type THeader = () => JSX.Element;
+export type HeaderT = () => JSX.Element;

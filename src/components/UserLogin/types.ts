@@ -4,4 +4,4 @@ interface UserLoginProps {
   setIsLoggedIn: SetIsLoggedIn;
 }
 
-export type TUserLogin = (props: UserLoginProps) => JSX.Element;
+export type UserLoginT = (props: UserLoginProps) => JSX.Element;

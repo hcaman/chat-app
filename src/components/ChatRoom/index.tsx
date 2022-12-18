@@ -3,11 +3,11 @@ import './styles.css';
 import TextInput from '../TextInput';
 import MessagesList from '../MessagesList';
 import { IMessagesChat } from '../../redux/types';
-import { TChatRoom, FoundLastMsg } from './types';
+import { ChatRoomT, FoundLastMsg } from './types';
 import useMessagesChat from '../../hooks/useMessagesChat';
 import UsersList from '../UserList';
 
-const ChatRoom: TChatRoom = ({ currentUser }) => {
+const ChatRoom: ChatRoomT = ({ currentUser }) => {
   const { msgsChat } = useMessagesChat(currentUser);
   const foundLastMsg: FoundLastMsg = (user) =>
     msgsChat.find((msg: IMessagesChat) => msg.user === user);

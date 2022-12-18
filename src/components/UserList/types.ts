@@ -1,1 +1,1 @@
-export type TUsersList = () => JSX.Element;
+export type UsersListT = () => JSX.Element;

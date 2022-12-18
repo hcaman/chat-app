@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  OnChangeInputType,
-  OnKeyUpChangeType,
-  OnSubmitDataType,
-  OnSubmitFormType,
+  OnChangeInputT,
+  OnKeyUpChangeT,
+  OnSubmitDataT,
+  OnSubmitFormT,
 } from '../components/TextInput/types';
 import { addMsg, updateMsg } from '../redux/chatSlice';
 import { IMessageModified, IMessagesChat } from '../redux/types';
@@ -28,7 +28,7 @@ const useInput = (
     }
   }, [lastMsg]);
 
-  const onSubmitUser: OnSubmitDataType = (user) => {
+  const onSubmitUser: OnSubmitDataT = (user) => {
     if (!user?.trim()) {
       return;
     }
@@ -42,7 +42,7 @@ const useInput = (
     }
   };
 
-  const onSubmitChat: OnSubmitDataType = (message) => {
+  const onSubmitChat: OnSubmitDataT = (message) => {
     if (currentUser) {
       const idToModify = lastMsg?.id;
       const dataMsg = {
@@ -61,12 +61,12 @@ const useInput = (
     }
   };
 
-  const onChangeInput: OnChangeInputType = (e) => {
+  const onChangeInput: OnChangeInputT = (e) => {
     setInputValue(e.currentTarget.value);
     setErrorEmptyInput(false);
   };
 
-  const onSubmitForm: OnSubmitFormType = (e) => {
+  const onSubmitForm: OnSubmitFormT = (e) => {
     e.preventDefault();
     if (!inputValue?.trim()) return setErrorEmptyInput(true);
     if (isChat) {
@@ -77,7 +77,7 @@ const useInput = (
     setInputValue('');
   };
 
-  const onKeyUpChange: OnKeyUpChangeType = (e) => {
+  const onKeyUpChange: OnKeyUpChangeT = (e) => {
     if (!isChat || typeof foundLastMsg === 'undefined' || e.key !== 'ArrowUp')
       return;
     setLastMsg(foundLastMsg(currentUser));
