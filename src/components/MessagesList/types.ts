@@ -1,20 +1,18 @@
 import { IMessagesChat } from '../../redux/types';
 
-export type MessagesListType = ({
-  currentUser,
-  msgsChat,
-}: {
+interface IMessagesListProps {
   currentUser: string;
   msgsChat: IMessagesChat[];
-}) => JSX.Element;
+}
 
-export type MessagesCardType = ({
-  singleMsg,
-  userLogged,
-}: {
+interface IMessagesCardProps {
   singleMsg: IMessagesChat;
   userLogged: string;
-}) => JSX.Element;
+}
+
+export type TMessagesList = (props: IMessagesListProps) => JSX.Element;
+
+export type TMessagesCard = (props: IMessagesCardProps) => JSX.Element;
 
 export type CheckUserType = (userMsgs: string) => boolean;
 export type IsOwnMsgsType = (userMsgs: string) => string;

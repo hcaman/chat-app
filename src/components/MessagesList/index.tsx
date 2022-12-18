@@ -1,10 +1,10 @@
 import React from 'react';
 import './styles.css';
 import { IMessagesChat } from '../../redux/types';
-import { MessagesCardType, MessagesListType } from './types';
+import { TMessagesCard, TMessagesList } from './types';
 import useMessagesChat from '../../hooks/useMessagesChat';
 
-const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
+const MessagesList: TMessagesList = ({ currentUser, msgsChat }) => {
   return (
     <div className="msgsList">
       {msgsChat?.length
@@ -20,7 +20,7 @@ const MessagesList: MessagesListType = ({ currentUser, msgsChat }) => {
   );
 };
 
-const MessagesCard: MessagesCardType = ({ singleMsg, userLogged }) => {
+const MessagesCard: TMessagesCard = ({ singleMsg, userLogged }) => {
   const {
     isFinishTransition,
     setTrueFinishTrans,
