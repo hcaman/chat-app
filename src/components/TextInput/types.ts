@@ -1,16 +1,13 @@
 import { SetIsLoggedIn } from '../../types';
 
-export type TextInputType = ({
-  isChat,
-  setIsLoggedIn,
-  currentUser,
-  foundLastMsg,
-}: {
+interface ITextInputProps {
   isChat?: boolean | undefined;
   setIsLoggedIn?: SetIsLoggedIn;
   currentUser?: string;
   foundLastMsg?: Function;
-}) => JSX.Element;
+}
+
+export type TTextInput = (props: ITextInputProps) => JSX.Element;
 
 export type OnSubmitDataType = (data: string, id?: string) => void;
 export type OnSubmitFormType = (e: React.FormEvent<HTMLFormElement>) => void;

@@ -1,10 +1,10 @@
 import React from 'react';
 import './styles.css';
 import phrases from '../../dictionary';
-import { TextInputType } from './types';
+import { TTextInput } from './types';
 import useInput from '../../hooks/useInput';
 
-const TextInput: TextInputType = ({
+const TextInput: TTextInput = ({
   isChat = false,
   setIsLoggedIn,
   currentUser = '',
