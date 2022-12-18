@@ -1,7 +1,7 @@
-export type ChatRoomType = ({
-  currentUser,
-}: {
+export interface IChatRoomProps {
   currentUser: string;
-}) => JSX.Element;
+}
+
+export type TChatRoom = (props: IChatRoomProps) => JSX.Element;
 
 export type FoundLastMsg = (user: string) => void;
