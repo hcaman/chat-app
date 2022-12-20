@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.css';
 import phrases from '../../dictionary';
-import { HeaderType } from './types';
+import { HeaderT } from './types';
 
-const Header: HeaderType = () => {
+const Header: HeaderT = () => {
   return (
     <div className="header">
       <h1>{phrases.headerTitle}</h1>

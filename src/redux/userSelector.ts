@@ -1,1 +1,3 @@
-export const selectUsersOnline = (state: any) => state.user;
+import { IState } from './types';
+
+export const selectUsersOnline = (state: IState) => state.user;

@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { loggedInDataType } from '../types';
+import { ILoggedInData } from '../types';
 
 const useLogin = () => {
   const logUsername = sessionStorage.getItem('logUsername');
 
-  const [loggedInData, setLoggedInData] = useState<loggedInDataType>({
+  const [loggedInData, setLoggedInData] = useState<ILoggedInData>({
     logUsername: logUsername || '',
     isLoggedIn: !!logUsername || false,
   });

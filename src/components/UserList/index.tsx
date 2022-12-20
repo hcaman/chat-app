@@ -1,10 +1,10 @@
 import React from 'react';
 import './styles.css';
-import { UsersListType } from './types';
+import { UsersListT } from './types';
 import { IUserData } from '../../redux/types';
 import useUserList from '../../hooks/useUserList';
 
-const UsersList: UsersListType = () => {
+const UsersList: UsersListT = () => {
   const { usersOnline } = useUserList();
   return (
     <div className="users-online">

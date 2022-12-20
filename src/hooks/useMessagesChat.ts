@@ -1,26 +1,26 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  OnClickBtnDelteType,
-  CheckUserType,
-  IsOwnMsgsType,
+  OnClickBtnDelteT,
+  CheckUserT,
+  IsOwnMsgsT,
 } from '../components/MessagesList/types';
 import { selectMsgsChat } from '../redux/chatSelector';
 import { deleteMsg } from '../redux/chatSlice';
-import { ChatAppData } from '../redux/types';
+import { IChatAppData } from '../redux/types';
 
 const useMessagesChat = (userLogged: string) => {
   const dispatch = useDispatch();
   const [isFinishTransition, setIsFinishtransition] = useState(false);
 
-  const { msgsChat }: ChatAppData = useSelector(selectMsgsChat);
+  const { msgsChat }: IChatAppData = useSelector(selectMsgsChat);
 
-  const onClickBtnDelte: OnClickBtnDelteType = (idToDelete) =>
+  const onClickBtnDelte: OnClickBtnDelteT = (idToDelete) =>
     dispatch(deleteMsg(idToDelete));
   const setTrueFinishTrans = () => setIsFinishtransition(true);
 
-  const checkUser: CheckUserType = (userMsgs) => userMsgs === userLogged;
-  const isOwnMsgs: IsOwnMsgsType = (userMsgs) =>
+  const checkUser: CheckUserT = (userMsgs) => userMsgs === userLogged;
+  const isOwnMsgs: IsOwnMsgsT = (userMsgs) =>
     checkUser(userMsgs) ? 'onRight' : 'onLeft';
 
   return {

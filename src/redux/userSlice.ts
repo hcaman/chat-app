@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { UsersAppData } from './types';
+import { IUsersAppData } from './types';
 
-const initialState: UsersAppData = {
+const initialState: IUsersAppData = {
   usersOnline: [],
   userLogged: '',
   isLoggedIn: false,

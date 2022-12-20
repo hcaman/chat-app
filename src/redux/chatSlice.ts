@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 import {
-  ChatAppData,
-  ConvertTimeType,
+  IChatAppData,
+  ConvertTimeT,
   IMessageModified,
   IMsgDataPayload,
 } from './types';
 
-const initialState: ChatAppData = {
+const initialState: IChatAppData = {
   msgsChat: [],
 };
 
@@ -19,7 +19,7 @@ const chatSlice = createSlice({
       state.msgsChat = state.msgsChat.sort((a, b) => b.addTime - a.addTime);
     },
     addMsg(state, action: PayloadAction<IMsgDataPayload>) {
-      const convertTime: ConvertTimeType = (timeString) => {
+      const convertTime: ConvertTimeT = (timeString) => {
         const formatTwoNums: (num: number) => string = (num) => {
           const checkLength = num.toString().length === 1;
           return checkLength ? `0${num}` : `${num}`;

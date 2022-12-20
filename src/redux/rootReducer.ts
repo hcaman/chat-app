@@ -3,9 +3,9 @@ import { persistReducer } from 'redux-persist';
 import userReducer from './userSlice';
 import chatReducer from './chatSlice';
 import persistConfig from './persistConfig';
-import { RootReducerType } from './types';
+import { RootReducerT } from './types';
 
-const rootReducer: RootReducerType | any = combineReducers({
+const rootReducer = combineReducers<RootReducerT>({
   user: userReducer,
   chat: chatReducer,
 });
