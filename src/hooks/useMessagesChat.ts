@@ -7,13 +7,17 @@ import {
 } from '../components/MessagesList/types';
 import { selectMsgsChat } from '../redux/chatSelector';
 import { deleteMsg } from '../redux/chatSlice';
-import { IChatAppData } from '../redux/types';
+import { IChatAppData, IMessagesChat } from '../redux/types';
+import { FoundLastMsg } from '../components/ChatRoom/types';
 
 const useMessagesChat = (userLogged: string) => {
   const dispatch = useDispatch();
   const [isFinishTransition, setIsFinishtransition] = useState(false);
 
   const { msgsChat }: IChatAppData = useSelector(selectMsgsChat);
+
+  const foundLastMsg: FoundLastMsg = (user) =>
+    msgsChat.find((msg: IMessagesChat) => msg.user === user) || null;
 
   const onClickBtnDelte: OnClickBtnDelteT = (idToDelete) =>
     dispatch(deleteMsg(idToDelete));
@@ -25,9 +29,10 @@ const useMessagesChat = (userLogged: string) => {
 
   return {
     isFinishTransition,
+    msgsChat,
+    foundLastMsg,
     setTrueFinishTrans,
     onClickBtnDelte,
-    msgsChat,
     checkUser,
     isOwnMsgs,
   };

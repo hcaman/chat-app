@@ -10,14 +10,15 @@ import { addMsg, updateMsg } from '../redux/chatSlice';
 import { IMessageModified, IMessagesChat } from '../redux/types';
 import { loginUser } from '../redux/userSlice';
 import { SetIsLoggedIn } from '../types';
+import useMessagesChat from './useMessagesChat';
 
 const useInput = (
   setIsLoggedIn: SetIsLoggedIn | undefined,
   currentUser: string,
-  foundLastMsg: Function | undefined,
   isChat: boolean | undefined
 ) => {
   const dispatch = useDispatch();
+  const { foundLastMsg } = useMessagesChat(currentUser);
   const [inputValue, setInputValue] = useState<string>('');
   const [errorEmptyInput, setErrorEmptyInput] = useState<boolean>(false);
   const [lastMsg, setLastMsg] = useState<null | IMessagesChat>(null);
@@ -78,8 +79,7 @@ const useInput = (
   };
 
   const onKeyUpChange: OnKeyUpChangeT = (e) => {
-    if (!isChat || typeof foundLastMsg === 'undefined' || e.key !== 'ArrowUp')
-      return;
+    if (!isChat || e.key !== 'ArrowUp') return;
     setLastMsg(foundLastMsg(currentUser));
   };
 

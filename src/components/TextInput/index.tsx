@@ -8,7 +8,6 @@ const TextInput: TextInputT = ({
   isChat = false,
   setIsLoggedIn,
   currentUser = '',
-  foundLastMsg,
 }) => {
   const {
     onSubmitForm,
@@ -16,7 +15,7 @@ const TextInput: TextInputT = ({
     inputValue,
     onChangeInput,
     onKeyUpChange,
-  } = useInput(setIsLoggedIn, currentUser, foundLastMsg, isChat);
+  } = useInput(setIsLoggedIn, currentUser, isChat);
   const { placeholderChat, placeholderUser, errorMsg } = phrases;
 
   return (
