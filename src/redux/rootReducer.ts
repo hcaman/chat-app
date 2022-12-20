@@ -5,7 +5,7 @@ import chatReducer from './chatSlice';
 import persistConfig from './persistConfig';
 import { RootReducerT } from './types';
 
-const rootReducer: RootReducerT | any = combineReducers({
+const rootReducer = combineReducers<RootReducerT>({
   user: userReducer,
   chat: chatReducer,
 });
